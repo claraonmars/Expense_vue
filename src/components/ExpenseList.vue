@@ -34,6 +34,7 @@ export default {
   methods: {
     addExpense: function(payload) {
       this.expenseList.push(payload);
+      this.$emit('updateChart', this.expenseList)
     },
     deleteExpense: function(id) {
       let index = this.expenseList.map(function(item) {
@@ -41,6 +42,7 @@ export default {
       }).indexOf(id);
 
       this.expenseList.splice(index, 1);
+      this.$emit('updateChart', this.expenseList)
     }
 
   }

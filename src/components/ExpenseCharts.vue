@@ -1,18 +1,34 @@
-<template>
+<!-- <template>
   <div>
-      <p>Chart goes here...<p></p>
+      <p>Chart goes here...</p>
   </div>
-</template>
+</template> -->
 
 <script>
+import { Line, mixins } from 'vue-chartjs'
+
 export default {
-  name: "ExpenseCharts",
-  data() {
-    return {
+  name: 'component-one',
+  extends: Line,
+  mixins: [mixins.reactiveProp],
+  data(){
+    return{
+      options:{
+        scales: {
+        yAxes: [{
+          ticks: {
+            beginAtZero: true,
+            min: 0
+          }
+        }]
+      },
+        responsive: true,
+        maintainAspectRatio: false,
+      }
     }
   },
-  methods: {
-
+  mounted () {
+  this.renderChart(this.chartData, this.options)
   }
 }
 </script>
@@ -20,6 +36,6 @@ export default {
 <style scoped>
 div {
   color: white;
-  background-color: black;
+  background-color: white;
 }
 </style>
