@@ -32,7 +32,13 @@ export default {
         date: this.currentDate,
         expense: this.currentExpense
       }
+      if (payload.expense !== 0 && payload.expense !== null && payload.date !== ''){
       this.$emit('addExpense', payload);
+      console.log(payload.expense)
+    	}
+    	else{
+    		alert('Fields cannot be left empty')
+    	}
 
       this.currentDate = new Date().toISOString().substring(0, 10);
       this.currentExpense = null;
